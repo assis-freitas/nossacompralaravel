@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Grupo;
-use DB;
 
 class GruposController extends Controller
 {
@@ -18,7 +17,7 @@ class GruposController extends Controller
      */
     public function index()
     {
-        $grupos = DB::table('tb_grupos')->where('usu_codigo', '=', '1')->get();
+        $grupos = Grupo::where('usu_codigo', '=', '1')->get();
         return view('grupos.index', ['grupos' => $grupos]);
     }
 

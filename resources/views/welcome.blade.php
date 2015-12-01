@@ -1,45 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('template')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+@section('conteudo')
+<div class="jumbotron">
+    <img src="{{ asset('img/logo.png') }}"> <span class="logo">Nossa Compra</span>
+    <p>
+        Todas as suas listas de compras em um lugar
+    </p>
+</div>
+<div class="container-fluid" id="conteudo">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <img src="img/devices.png" id="devices">
         </div>
-    </body>
-</html>
+        <div class="col-md-6">
+            <ul class="list-things">
+                <li><i class="fa fa-check-square-o"></i> Melhor gerenciamento</li>
+                <li><i class="fa fa-check-square-o"></i> Compartilhe com quem você quiser</li>
+                <li><i class="fa fa-check-square-o"></i> Acesse de qualquer dispositivo</li>
+            </ul>
+        </div>
+    </div>
+</div>
+@endsection

@@ -2,14 +2,15 @@
 
 @section('conteudo')
 	<ul class="breadcrumb">
-		<li><a href="{{ action('ListasController@index', ['id' => $grupo->gru_codigo]) }}">{{ $grupo->gru_nome }}</a></li>
-		<li>Listas</li>
+		<li>{{ $grupo->gru_nome }}</li>
 		<li>{{ $lista->lis_nome }}</li>
+		<li>Itens</li>
+		<li>{{ $item->ite_descricao }}</li>
 		<li class="active">Excluir</li>
 	</ul>
-	<h1>Você realmente deseja excluir a lista {{ $lista->lis_nome }}?</h1>
+	<h1>Você realmente deseja excluir o item {{ $item->ite_descricao }}?</h1>
 
-	<form method="POST" action="{{ action('ListasController@destroy', ['idGrupo' => $grupo->gru_codigo, 'id' => $lista->lis_codigo]) }}">
+	<form method="POST" action="{{ action('ItemsController@destroy', ['idGrupo' => $grupo->gru_codigo, 'idLista' => $lista->lis_codigo, 'id' => $item->ite_codigo]) }}">
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<input type="hidden" name="_method" value="DELETE">
 
