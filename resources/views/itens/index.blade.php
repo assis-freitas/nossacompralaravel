@@ -6,11 +6,11 @@
 		<li>{{ $lista->lis_nome }}</li>
 		<li class="active">Itens</li>
 	</ul>
-	<h1>Listas</h1>
-	<a href="{{ action('ItemsController@create', ['idGrupo' => $grupo->gru_codigo, 'idLista' => $lista->lis_codigo]) }}">Novo Item</a>
+	<h1>Itens</h1>
+	<a href="{{ action('ItemsController@create', ['idGrupo' => $grupo->gru_codigo, 'idLista' => $lista->lis_codigo]) }}" class="btn btn-default">Novo Item</a>
 	@if(count($itens) > 0)
 
-		<table>
+		<table class="table">
 			<thead>
 				<tr>
 					<th>Código</th>
@@ -42,6 +42,6 @@
 			</tbody>
 		</table>
 	@else
-		<p>Nenhum item foi encontrado</p>
+		<p id="erroGrupo">Nenhum item foi encontrado</p>
 	@endif
 @endsection

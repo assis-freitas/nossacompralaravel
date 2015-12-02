@@ -41,7 +41,7 @@ class GruposController extends Controller
     {
         Grupo::create([
             'gru_nome'   => $request->input('nome'),
-            'usu_codigo' => 1
+            'usu_codigo' => Auth::user()->usu_codigo
         ]);
 
         return redirect('/grupos');

@@ -31,7 +31,8 @@ class ListasController extends Controller
      */
     public function create($id)
     {
-        $grupo = Grupo::where('gru_codigo', '=', $id)->first();
+        $grupo  = Grupo::where('gru_codigo', '=', $id)->first();
+
         return view('listas.novo', [ 'grupo' => $grupo ]);
     }
 

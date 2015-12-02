@@ -4,7 +4,7 @@
 	<title>Nossa Compra</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
-	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<!--<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>-->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/estilo.css') }}">
 </head>
 <body>
@@ -26,19 +26,20 @@
                 @if(!Auth::check())
                 <form class="navbar-form navbar-right" action="/entrar/" role="search" method="post">
 					<div class="form-group">
-						<input title="Insira seu E-mail" type="text" class="form-control" placeholder="E-mail" name="user" autocomplete="off">
-						<input title="Insira sua Senha" type="password" class="form-control" placeholder="Senha" name="pass">
+						<input title="Insira seu E-mail" type="text" class="form-control" placeholder="E-mail" name="usu_email" autocomplete="off">
+						<input title="Insira sua Senha" type="password" class="form-control" placeholder="Senha" name="usu_senha">
 					</div>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<button title="Entrar em sua conta" type="submit" class="btn btn-default">Entrar</button>
 				</form>
                 @endif
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                         <li>
-                            <a title="Ver todos seus grupos" href="/dashboard/">Meus Grupos</a>
+                            <a title="Ver todos seus grupos" href="/grupos/">Meus Grupos</a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> usuário_email <i class="fa fa-caret-down"></i></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->usu_email }} <i class="fa fa-caret-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="#"><i class="fa fa-cog"></i> Configurações</a>

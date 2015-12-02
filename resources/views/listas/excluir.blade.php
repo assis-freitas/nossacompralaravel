@@ -13,7 +13,7 @@
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<input type="hidden" name="_method" value="DELETE">
 
-		<input type="submit" value="Sim" name="acao">
-		<input type="submit" value="Não" name="acao">
+		<input type="submit" value="Sim" name="acao" class="btn btn-default btn-danger">
+		<input type="submit" value="Não" name="acao" class="btn btn-default">
 	</form>
 @endsection
