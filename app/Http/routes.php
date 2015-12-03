@@ -23,17 +23,30 @@ Route::get('/', function () {
 
 Route::get('grupos', ['middleware' => 'auth', 'GruposController@index']);
 
-Route::post('grupos', ['middleware' => 'auth','GruposController@store']);
+Route::post('grupos', 'GruposController@store');
 
 Route::put('grupos/editar/{id}', ['middleware' => 'auth','GruposController@update']);
 
 Route::delete('grupos/excluir/{id}', ['middleware' => 'auth','GruposController@destroy']);
 
-Route::get('grupos/novo', ['middleware' => 'auth','GruposController@create']);
+Route::get('grupos/novo','GruposController@create');
 
 Route::get('grupos/editar/{id}', ['middleware' => 'auth','GruposController@edit']);
 
 Route::get('grupos/excluir/{id}', ['middleware' => 'auth','GruposController@delete']);
+
+/*
+|
+|	Rotas de Membros
+|
+*/
+
+Route::get('grupos/{id}/membros', 'MembrosController@index');
+
+Route::post('grupos/{id}/membros', 'MembrosController@index');
+
+
+
 
 /*
 |

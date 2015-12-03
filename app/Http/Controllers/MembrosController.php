@@ -6,19 +6,23 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Membro;
 use App\Grupo;
+use Auth;
 
-class GruposController extends Controller
+class MembrosController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $grupos = Grupo::where('usu_codigo', '=', '1')->get();
-        return view('grupos.index', ['grupos' => $grupos]);
+        $grupo = Grupo::where('gru_codigo','=',$id)->first();
+        $membro = Membro::where('gru_codigo','=',$id)->get();
+
+        return view('membros.index',['membros'=> $membro,'grupo'=>$grupo]);
     }
 
     /**
@@ -28,7 +32,7 @@ class GruposController extends Controller
      */
     public function create()
     {
-        return view('grupos.novo');
+        //
     }
 
     /**
@@ -39,12 +43,7 @@ class GruposController extends Controller
      */
     public function store(Request $request)
     {
-        Grupo::create([
-            'gru_nome'   => $request->input('nome'),
-            'usu_codigo' => 1//Auth::user()->usu_codigo
-        ]);
-
-        return redirect('/grupos');
+        //
     }
 
     /**
@@ -66,9 +65,7 @@ class GruposController extends Controller
      */
     public function edit($id)
     {
-        $grupo = Grupo::where('gru_codigo', '=', $id)->first();
-
-        return view('grupos.editar', [ 'grupo' => $grupo ]);
+        //
     }
 
     /**
@@ -80,10 +77,7 @@ class GruposController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Grupo::where('gru_codigo', '=', $id)
-               ->update(['gru_nome' => $request->input('nome')]);
-
-        return redirect('/grupos');
+        //
     }
 
     /**
@@ -92,19 +86,8 @@ class GruposController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        if($request->input('acao') == 'Sim'){
-            Grupo::where('gru_codigo', '=', $id)
-                   ->delete();
-        }
-
-        return redirect('/grupos');
-    }
-
-    public function delete($id){
-        $grupo = Grupo::where('gru_codigo', '=', $id)->first();
-
-        return view('grupos.excluir', [ 'grupo' => $grupo ]);
+        //
     }
 }
