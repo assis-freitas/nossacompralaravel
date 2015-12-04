@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
 use Auth;
+use Hash;
 
 class AuthController extends Controller
 {
@@ -29,6 +32,13 @@ class AuthController extends Controller
      *
      * @return void
      */
+
+    protected $username = 'usu_email';
+
+    protected $redirectTo = '/grupos';
+
+    protected $loginPath  = '/cadastrar';
+
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
@@ -61,6 +71,24 @@ class AuthController extends Controller
             'usu_nome' => $data['usu_nome'],
             'usu_email' => $data['usu_email'],
             'usu_senha' => bcrypt($data['usu_senha']),
+        ]);
+    }
+
+    public function postLogin(Request $request) {
+        $field = 'usu_email';
+
+        $pass = $request->input('usu_senha');
+        $user = User::where('usu_email', $request->input('usu_email'))->first();
+
+
+        if (Hash::check($pass, $user->usu_senha))
+        {
+            Auth::loginUsingId($user->usu_codigo);
+            return redirect('/grupos');
+        }
+
+        return redirect('/cadastrar')->withErrors([
+            'error' => 'Usuário ou senha inválido',
         ]);
     }
 }

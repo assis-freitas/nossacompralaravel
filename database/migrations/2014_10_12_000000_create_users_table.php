@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
             $table->increments('usu_codigo');
             $table->string('usu_nome');
             $table->string('usu_email')->unique();
-            $table->string('usu_senha', 60);
+            $table->string('usu_senha', 100);
             $table->rememberToken();
             $table->timestamps();
         });

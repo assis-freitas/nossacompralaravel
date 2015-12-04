@@ -1,10 +1,6 @@
 @extends('template')
 
 @section('conteudo')
-		<ul class="breadcrumb">
-		<li>{{ $grupo->gru_nome }}</li>
-		<li class="active">Membros</li>
-	</ul>
 	<h1>Membros</h1>
 	
 	@if(count($membros) > 0)

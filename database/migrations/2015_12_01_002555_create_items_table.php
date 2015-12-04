@@ -14,11 +14,13 @@ class CreateItemsTable extends Migration
     {
         Schema::create('tb_items', function (Blueprint $table) {
             $table->increments('ite_codigo');
-            $table->integer('lis_codigo');
+            $table->integer('lis_codigo')->unsigned();
             $table->string('ite_descricao');
             $table->decimal('ite_quantidade', 6, 2);
             $table->integer('ite_status');
             $table->timestamps();
+
+            $table->foreign('lis_codigo')->references('lis_codigo')->on('tb_listas')->onDelete('cascade');
         });
     }
 

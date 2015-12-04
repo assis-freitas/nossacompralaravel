@@ -15,8 +15,9 @@ class CreateGruposTable extends Migration
         Schema::create('tb_grupos', function (Blueprint $table) {
             $table->increments('gru_codigo');
             $table->string('gru_nome');
-            $table->integer('usu_codigo');
+            $table->integer('usu_codigo')->unsigned();
             $table->timestamps();
+            $table->foreign('usu_codigo')->references('usu_codigo')->on('tb_usuarios');
         });
     }
 

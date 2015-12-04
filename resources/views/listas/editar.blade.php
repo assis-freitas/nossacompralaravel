@@ -2,12 +2,6 @@
 
 @section('conteudo')
 	<div class="col-md-offset-3 col-md-6 col-md-offset-3">
-		<ul class="breadcrumb">
-			<li><a href="{{ action('ListasController@index', ['id' => $grupo->gru_codigo]) }}">{{ $grupo->gru_nome }}</a></li>
-			<li>Listas</li>
-			<li>{{ $lista->lis_nome }}</li>
-			<li class="active">Editar</li>
-		</ul>
 
 		<h1>Editar Grupo</h1>
 

@@ -62,7 +62,7 @@ class ListasController extends Controller
      */
     public function edit($idGrupo, $id)
     {
-        $grupo = Grupo::where('gru_codigo', '=', $id)->first();
+        $grupo = Grupo::where('gru_codigo', '=', $idGrupo)->first();
         $lista = Lista::where('lis_codigo', '=', $id)->first();
 
         return view('listas.editar', ['lista' => $lista, 'grupo' => $grupo]);

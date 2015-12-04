@@ -14,10 +14,13 @@ class CreateTableMembro extends Migration
     {
             Schema::create('tb_membros', function (Blueprint $table) {
             $table->increments('mem_codigo');
-            $table->integer('usu_codigo');
-            $table->integer('gru_codigo');
+            $table->integer('usu_codigo')->unsigned();
+            $table->integer('gru_codigo')->unsigned();
             $table->boolean('mem_tipo');
             $table->timestamps();
+
+            $table->foreign('usu_codigo')->references('usu_codigo')->on('tb_usuarios');
+            $table->foreign('gru_codigo')->references('gru_codigo')->on('tb_grupos');
         });
     }
 

@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Grupo;
 
+use Auth;
+
 class GruposController extends Controller
 {
     /**
@@ -41,7 +43,7 @@ class GruposController extends Controller
     {
         Grupo::create([
             'gru_nome'   => $request->input('nome'),
-            'usu_codigo' => 1//Auth::user()->usu_codigo
+            'usu_codigo' => Auth::user()->usu_codigo
         ]);
 
         return redirect('/grupos');
